@@ -39,7 +39,7 @@ int main(int argc, char const *argv[])
       ", and processed at '" << now.seconds() <<
       "', wait time: " << time_waited_for_processing.seconds());
     if (msg.frame_id == "Hello World: 7") {
-      std::this_thread::sleep_for(std::chrono::seconds(5));
+      //std::this_thread::sleep_for(std::chrono::seconds(5));
     }
     if (time_waited_for_processing.seconds() > (time_between_publishes * 0.75)) {
       RCLCPP_ERROR(node->get_logger(), "Took too long to process message.");
@@ -47,15 +47,15 @@ int main(int argc, char const *argv[])
     }
   };
   rclcpp::SubscriptionOptions so;
-  so.event_callbacks.matched_callback = [node](const rclcpp::MatchedInfo & matched_info) {
-    RCLCPP_INFO_STREAM(
-      node->get_logger(),
-      "Matched publisher event, " <<
-      "total_count: '" << matched_info.total_count << "', " <<
-      "total_count_change: '" << matched_info.total_count_change << "', " <<
-      "current_count: '" << matched_info.current_count << "', " <<
-      "current_count_change: '" << matched_info.current_count_change << "'");
-  };
+  //so.event_callbacks.matched_callback = [node](const rclcpp::MatchedInfo & matched_info) {
+  //  RCLCPP_INFO_STREAM(
+  //    node->get_logger(),
+  //    "Matched publisher event, " <<
+  //    "total_count: '" << matched_info.total_count << "', " <<
+  //    "total_count_change: '" << matched_info.total_count_change << "', " <<
+  //    "current_count: '" << matched_info.current_count << "', " <<
+  //    "current_count_change: '" << matched_info.current_count_change << "'");
+  //};
   auto subscription = node->create_subscription<std_msgs::msg::Header>("data", 10, callback, so);
 
   rclcpp::spin(node);

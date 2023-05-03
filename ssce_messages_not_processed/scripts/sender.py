@@ -1,4 +1,4 @@
-#!/Users/william/.pyenv/versions/3.10.5/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
+#!/usr/bin/env python3
 # Copyright 2023 Open Source Robotics Foundation, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@
 # limitations under the License.
 
 from threading import Thread
+from time import sleep
 
 import rclpy
 from rclpy.node import Node
